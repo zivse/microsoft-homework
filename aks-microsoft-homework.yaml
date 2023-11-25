@@ -39,3 +39,45 @@ spec:
   selector:
     app: microsoft-b
   type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microsoft-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microsoft-a
+  template:
+    metadata:
+      labels:
+        app: microsoft-a
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: microsoft-a
+        image: zivse/microsoft-homework-a:latest
+        ports:
+        - containerPort: 8080
+          name: microsoft-a
+        resources:
+          requests:
+            cpu: 1m
+            memory: 50Mi
+          limits:
+            cpu: 1000m
+            memory: 100Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microsoft-a
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: microsoft-a
+  type: LoadBalancer
