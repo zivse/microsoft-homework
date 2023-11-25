@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microsoft-b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microsoft-b
+  template:
+    metadata:
+      labels:
+        app: microsoft-b
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: microsoft-b
+        image: zivse/microsoft-homework-b:latest
+        livenessProbe:
+          exec:
+            command:
+              - cat
+              - /tmp/healthy
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        ports:
+        - containerPort: 8080
+          name: microsoft-b
+        resources:
+          requests:
+            cpu: 1m
+            memory: 50Mi
+          limits:
+            cpu: 1000m
+            memory: 100Mi
