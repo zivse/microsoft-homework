@@ -38,7 +38,7 @@ spec:
     targetPort: 8080
   selector:
     app: microsoft-b
-  type: LoadBalancer
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -80,4 +80,5 @@ spec:
     targetPort: 8080
   selector:
     app: microsoft-a
-  type: LoadBalancer
+  type: ClusterIP
+---
