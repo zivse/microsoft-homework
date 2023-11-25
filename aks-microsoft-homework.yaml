@@ -16,7 +16,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: B
-        image: ghcr.io/azure-samples/aks-store-demo/B:latest
+        image: b
         ports:
         - containerPort: 8080
           name: B
