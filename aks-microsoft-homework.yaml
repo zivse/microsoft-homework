@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: B
+  name: microsoft-homework-b
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: B
+      app: microsoft-homework-b
   template:
     metadata:
       labels:
-        app: B
+        app: microsoft-homework-b
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: B
+      - name: microsoft-homework-b
         image: zivse/microsoft-homework-b
         ports:
         - containerPort: 8080
-          name: B
+          name: microsoft-homework-b
         resources:
           requests:
             cpu: 1m
@@ -31,11 +31,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: B
+  name: microsoft-homework-b
 spec:
   ports:
   - port: 80
     targetPort: 8080
   selector:
-    app: B
+    app: microsoft-homework-b
   type: LoadBalancer
