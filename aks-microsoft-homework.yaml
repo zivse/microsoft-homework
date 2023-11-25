@@ -16,7 +16,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: B
-        image: b
+        image: zivse/microsoft-homework-b
         ports:
         - containerPort: 8080
           name: B
