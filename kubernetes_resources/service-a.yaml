@@ -34,15 +34,3 @@ spec:
           limits:
             cpu: 1000m
             memory: 100Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: microsoft-a
-spec:
-  ports:
-  - port: 80
-    targetPort: 8080
-  selector:
-    app: microsoft-a
-  type: ClusterIP
