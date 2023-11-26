@@ -17,13 +17,6 @@ spec:
       containers:
       - name: microsoft-a
         image: zivse/microsoft-homework-a:latest
-        livenessProbe:
-          exec:
-            command:
-              - cat
-              - /tmp/healthy
-          initialDelaySeconds: 5
-          periodSeconds: 5
         ports:
         - containerPort: 8080
           name: microsoft-a
