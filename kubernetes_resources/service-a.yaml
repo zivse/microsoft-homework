@@ -17,6 +17,13 @@ spec:
       containers:
       - name: microsoft-a
         image: zivse/microsoft-homework-a:latest
+        livenessProbe:
+          exec:
+            command:
+              - cat
+              - /app/main.py
+          initialDelaySeconds: 5
+          periodSeconds: 5
         ports:
         - containerPort: 8080
           name: microsoft-a
