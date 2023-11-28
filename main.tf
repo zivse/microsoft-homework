@@ -97,10 +97,10 @@ resource "kubectl_manifest" "network-policy-deny-all" {
   depends_on = [azurerm_kubernetes_cluster.k8s]
 }
 
-#resource "kubectl_manifest" "network-policy-b-to-a-allow" {
-#  yaml_body  = file("${path.module}/kubernetes_resources/network-policy-b-to-a-allow.yaml")
-#  depends_on = [azurerm_kubernetes_cluster.k8s]
-#}
+resource "kubectl_manifest" "network-policy-b-to-a-allow" {
+  yaml_body  = file("${path.module}/kubernetes_resources/network-policy-b-to-a-allow.yaml")
+  depends_on = [azurerm_kubernetes_cluster.k8s]
+}
 
 resource "helm_release" "ingress" {
   name       = "ingress"
